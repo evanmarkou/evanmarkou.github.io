@@ -2,23 +2,21 @@
 {% assign visible_count = include.visible_count | default: 5 %}
 {% assign list_id = include.id | default: 'news-list' %}
 
-<div class="news-list" data-visible-count="{{ visible_count }}">
+<div class="news-list" data-visible-count="{{ visible_count }}" data-new-days="{{ include.new_days | default: 60 }}">
   <ul class="news-items" id="{{ list_id }}-items">
     {% for item in items %}
       {% assign index0 = forloop.index0 %}
-      <li class="news-item"{% if index0 >= visible_count %} hidden{% endif %}>
-        {% if item.link %}<a href="{{ item.link | relative_url }}">{% endif %}
-        <span class="news-date">{{ item.date | date: "%Y-%m-%d" }}</span>
-        —
-        <span class="news-text">{{ item.text }}</span>
+      <li class="news-item" data-date="{{ item.date | date_to_xmlschema }}"{% if index0 >= visible_count %} hidden{% endif %}>
+        {% if item.link %}<a href="{{ item.link | relative_url }}" class="news-link">{% endif %}
+        <span class="news-date">({{ item.date | date: "%Y-%m-%d" }})</span>
+        <span class="news-text"> {{ item.text }}</span>
+        <span class="news-badge" aria-label="New" title="New" hidden></span>
         {% if item.link %}</a>{% endif %}
       </li>
     {% endfor %}
   </ul>
   {% if items.size > visible_count %}
-    <button type="button" class="news-toggle" aria-expanded="false" aria-controls="{{ list_id }}-items">
-      Show more
-    </button>
+    <button type="button" class="news-toggle" aria-expanded="false" aria-controls="{{ list_id }}-items" aria-label="Show more news items">[more]</button>
   {% endif %}
 </div>
 
@@ -28,12 +26,29 @@
     containers.forEach(function(container) {
       var visibleCount = parseInt(container.getAttribute('data-visible-count') || '5', 10);
       var items = container.querySelectorAll('.news-item');
+      var newDays = parseInt(container.getAttribute('data-new-days') || '60', 10);
       var btn = container.querySelector('.news-toggle');
+
+      // mark recent items as new
+      var now = new Date();
+      items.forEach(function(li) {
+        var ds = li.getAttribute('data-date');
+        if (!ds) return;
+        var d = new Date(ds);
+        if (isNaN(d)) return;
+        var diffDays = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+        if (diffDays <= newDays) {
+          var badge = li.querySelector('.news-badge');
+          if (badge) badge.removeAttribute('hidden');
+          li.classList.add('is-new');
+        }
+      });
+
       if (!btn) return;
 
       function setExpanded(expanded) {
         btn.setAttribute('aria-expanded', String(expanded));
-        btn.textContent = expanded ? 'Show less' : 'Show more';
+        btn.textContent = expanded ? '[less]' : '[more]';
         items.forEach(function(li, idx) {
           if (idx >= visibleCount) {
             if (expanded) {
@@ -55,10 +70,15 @@
 
 <style>
   .news-list { margin: 1rem 0; }
-  .news-items { list-style: none; padding-left: 0; margin: 0; }
+  .news-items { list-style: disc; padding-left: 1.25rem; margin: 0; }
   .news-item { margin: 0.25rem 0; }
   .news-date { font-variant-numeric: tabular-nums; color: #666; }
-  .news-toggle { margin-top: 0.5rem; }
+  .news-link { text-decoration: none; color: inherit; }
+  .news-link:hover .news-text { text-decoration: underline; }
+  .news-badge { display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: #2a7ae2; margin-left: 0.5rem; vertical-align: middle; }
+  .news-item.is-new .news-date { color: #2a7ae2; }
+  .news-toggle { margin-top: 0.5rem; background: none; border: 0; padding: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: none; }
+  .news-toggle:hover { text-decoration: underline; }
 </style>
 
 
