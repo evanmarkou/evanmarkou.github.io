@@ -19,8 +19,6 @@
         if (isNaN(d)) return;
         var diffDays = Math.floor((now - d) / (1000 * 60 * 60 * 24));
         if (diffDays <= newDays) {
-          var badge = li.querySelector('.news-badge');
-          if (badge) badge.removeAttribute('hidden');
           li.classList.add('is-new');
         }
       });
