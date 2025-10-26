@@ -1,0 +1,64 @@
+{% assign items = site.data.news | sort: 'date' | reverse %}
+{% assign visible_count = include.visible_count | default: 5 %}
+{% assign list_id = include.id | default: 'news-list' %}
+
+<div class="news-list" data-visible-count="{{ visible_count }}">
+  <ul class="news-items" id="{{ list_id }}-items">
+    {% for item in items %}
+      {% assign index0 = forloop.index0 %}
+      <li class="news-item"{% if index0 >= visible_count %} hidden{% endif %}>
+        {% if item.link %}<a href="{{ item.link | relative_url }}">{% endif %}
+        <span class="news-date">{{ item.date | date: "%Y-%m-%d" }}</span>
+        —
+        <span class="news-text">{{ item.text }}</span>
+        {% if item.link %}</a>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% if items.size > visible_count %}
+    <button type="button" class="news-toggle" aria-expanded="false" aria-controls="{{ list_id }}-items">
+      Show more
+    </button>
+  {% endif %}
+</div>
+
+<script>
+  (function() {
+    var containers = document.querySelectorAll('.news-list');
+    containers.forEach(function(container) {
+      var visibleCount = parseInt(container.getAttribute('data-visible-count') || '5', 10);
+      var items = container.querySelectorAll('.news-item');
+      var btn = container.querySelector('.news-toggle');
+      if (!btn) return;
+
+      function setExpanded(expanded) {
+        btn.setAttribute('aria-expanded', String(expanded));
+        btn.textContent = expanded ? 'Show less' : 'Show more';
+        items.forEach(function(li, idx) {
+          if (idx >= visibleCount) {
+            if (expanded) {
+              li.removeAttribute('hidden');
+            } else {
+              li.setAttribute('hidden', '');
+            }
+          }
+        });
+      }
+
+      btn.addEventListener('click', function() {
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        setExpanded(!expanded);
+      });
+    });
+  })();
+  </script>
+
+<style>
+  .news-list { margin: 1rem 0; }
+  .news-items { list-style: none; padding-left: 0; margin: 0; }
+  .news-item { margin: 0.25rem 0; }
+  .news-date { font-variant-numeric: tabular-nums; color: #666; }
+  .news-toggle { margin-top: 0.5rem; }
+</style>
+
+
