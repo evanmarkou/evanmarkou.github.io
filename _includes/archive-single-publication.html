@@ -89,11 +89,10 @@
    * Button Styles (using specificity to override theme defaults)
   */
 
-  /* Default state for all themes */
+  /* Default state for all themes - will be overridden below */
   .page__content .publication-links .btn--ghost {
-    background-color: transparent;
-    border: 1px solid var(--global-link-color);
-    color: var(--global-link-color);
+    background: transparent;
+    border: 1px solid;
     padding: 0.25rem 0.75rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
@@ -103,10 +102,16 @@
     transition: all 0.2s ease-in-out;
   }
   
-  /* Light theme override for better visibility */
+  /* Light theme: dark grey border and text */
   html:not([data-theme="dark"]) .page__content .publication-links .btn--ghost {
     border-color: #555;
     color: #555;
+  }
+  
+  /* Dark theme: link color border and text */
+  html[data-theme="dark"] .page__content .publication-links .btn--ghost {
+    border-color: var(--global-link-color);
+    color: var(--global-link-color);
   }
   
   /* Hover state for light theme */
