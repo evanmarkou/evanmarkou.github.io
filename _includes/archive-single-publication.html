@@ -95,13 +95,11 @@
     border-radius: 4px;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-  }
-  html[data-theme="dark"] .publication-links .btn--ghost {
-    /* No change needed for dark theme, it works as expected */
+ 
   }
   html:not([data-theme="dark"]) .publication-links .btn--ghost {
-    border-color: #555; /* A solid, dark grey for visibility */
-    color: #555; /* A solid, dark grey for visibility */
+    border-color: #555 !important; /* A solid, dark grey for visibility */
+    color: #555 !important;       /* A solid, dark grey for visibility */
   }
   .publication-links .btn--ghost:hover {
     background-color: var(--global-link-color);
