@@ -121,24 +121,33 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   var collapsibles = document.querySelectorAll(".publication-links .collapsible");
-  
+
   collapsibles.forEach(function(collapsible) {
     collapsible.addEventListener("click", function() {
-      var content = this.nextElementSibling;
+      // Find the collapsible content div within the same parent
+      var content = this.parentElement.querySelector('.collapsible-content');
       var isVisible = content.style.display === "block";
 
-      // First, hide all contents and deactivate all buttons
+      // Hide all other collapsible content sections
       var allContent = document.querySelectorAll('.publication-links .collapsible-content');
       allContent.forEach(function(item) {
-        item.style.display = 'none';
+        if (item !== content) {
+          item.style.display = 'none';
+        }
       });
+      
       var allButtons = document.querySelectorAll('.publication-links .collapsible');
       allButtons.forEach(function(button) {
-        button.classList.remove('active');
-      });
+        if (button !== this) {
+          button.classList.remove('active');
+        }
+      }.bind(this));
 
-      // If the content was not visible, show it and activate the button
-      if (!isVisible) {
+      // Toggle the current section
+      if (isVisible) {
+        content.style.display = "none";
+        this.classList.remove('active');
+      } else {
         content.style.display = "block";
         this.classList.add('active');
       }
