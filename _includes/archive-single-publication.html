@@ -15,24 +15,23 @@
     <div class="publication-links">
       {% if post.paperurl %}<a href="{{ post.paperurl }}" class="btn btn--ghost">Paper</a>{% endif %}
       {% if post.preprinturl %}<a href="{{ post.preprinturl }}" class="btn btn--ghost">Preprint</a>{% endif %}
-      {% if post.abstract %}<button class="btn btn--ghost collapsible">Abstract</button>{% endif %}
+      {% if post.abstract %}
+        <button class="btn btn--ghost collapsible">Abstract</button>
+        <div class="collapsible-content">
+          <pre><code>{{ post.abstract }}</code></pre>
+        </div>
+      {% endif %}
       {% if post.codeurl %}<a href="{{ post.codeurl }}" class="btn btn--ghost">Code</a>{% endif %}
       {% if post.slidesurl %}<a href="{{ post.slidesurl }}" class="btn btn--ghost">Slides</a>{% endif %}
       {% if post.videourl %}<a href="{{ post.videourl }}" class="btn btn--ghost">Video</a>{% endif %}
-      {% if post.bibtex %}<button class="btn btn--ghost collapsible">BibTeX</button>{% endif %}
+      {% if post.bibtex %}
+        <button class="btn btn--ghost collapsible">BibTeX</button>
+        <div class="collapsible-content">
+          <pre><code>{{ post.bibtex }}</code></pre>
+        </div>
+      {% endif %}
     </div>
 
-    {% if post.abstract %}
-    <div class="collapsible-content">
-      <pre><code>{{ post.abstract }}</code></pre>
-    </div>
-    {% endif %}
-    
-    {% if post.bibtex %}
-    <div class="collapsible-content">
-      <pre><code>{{ post.bibtex }}</code></pre>
-    </div>
-    {% endif %}
   </div>
 </div>
 
@@ -121,20 +120,29 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  var collapsibles = document.querySelectorAll(".publication-entry .collapsible");
+  var collapsibles = document.querySelectorAll(".publication-links .collapsible");
   
   collapsibles.forEach(function(collapsible) {
     collapsible.addEventListener("click", function() {
       this.classList.toggle("active");
-      var content = this.parentElement.nextElementSibling;
-      while(content && !content.classList.contains('collapsible-content')) {
-        content = content.nextElementSibling;
-      }
+      var content = this.nextElementSibling;
       
-      if (content && content.style.display === "block") {
-        content.style.display = "none";
-      } else if (content) {
-        content.style.display = "block";
+      if (content && content.classList.contains('collapsible-content')) {
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          // Hide all other collapsible content before showing the new one
+          var allContent = document.querySelectorAll('.publication-links .collapsible-content');
+          allContent.forEach(function(item) {
+            item.style.display = 'none';
+          });
+          var allButtons = document.querySelectorAll('.publication-links .collapsible');
+          allButtons.forEach(function(button) {
+            if(button !== this) button.classList.remove('active');
+          }.bind(this));
+          
+          content.style.display = "block";
+        }
       }
     });
   });
