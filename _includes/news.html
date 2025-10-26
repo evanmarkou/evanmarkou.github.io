@@ -7,11 +7,9 @@
     {% for item in items %}
       {% assign index0 = forloop.index0 %}
       <li class="news-item" data-date="{{ item.date | date_to_xmlschema }}"{% if index0 >= visible_count %} hidden{% endif %}>
-        {% if item.link %}<a href="{{ item.link | relative_url }}" class="news-link">{% endif %}
         <span class="news-date">({{ item.date | date: "%Y-%m-%d" }})</span>
         <span class="news-text"> {{ item.text }}</span>
         <span class="news-badge" aria-label="New" title="New" hidden></span>
-        {% if item.link %}</a>{% endif %}
       </li>
     {% endfor %}
   </ul>
@@ -25,8 +23,6 @@
   .news-items { list-style: disc; padding-left: 1.25rem; margin: 0; }
   .news-item { margin: 0.25rem 0; }
   .news-date { font-variant-numeric: tabular-nums; color: #666; }
-  .news-link { text-decoration: none; color: inherit; }
-  .news-link:hover { text-decoration: none !important; color: inherit; }
   .news-badge { display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: #2a7ae2; margin-left: 0.5rem; vertical-align: middle; }
   .news-item.is-new .news-date { color: #2a7ae2; }
   .news-toggle { margin-top: 0.5rem; background: none; border: 0; padding: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: none; }
