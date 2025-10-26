@@ -3,3 +3,10 @@
 {% include analytics.html %}
 
 <script src="{{ base_path }}/assets/js/news-toggle.js"></script>
+<script>
+  // Force the browser tab title to be the site title on every page load.
+  // This is a workaround for a flickering issue caused by a theme script.
+  document.addEventListener("DOMContentLoaded", function() {
+    document.title = "{{ site.title | escape }}";
+  });
+</script>
