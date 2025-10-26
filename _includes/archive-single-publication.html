@@ -13,13 +13,13 @@
     <p class="publication-venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
     
     <div class="publication-links">
-      {% if post.paperurl %}<a href="{{ post.paperurl }}" class="btn btn--inverse">Paper</a>{% endif %}
-      {% if post.preprinturl %}<a href="{{ post.preprinturl }}" class="btn btn--inverse">Preprint</a>{% endif %}
-      {% if post.abstract %}<button class="btn btn--inverse collapsible">Abstract</button>{% endif %}
-      {% if post.codeurl %}<a href="{{ post.codeurl }}" class="btn btn--inverse">Code</a>{% endif %}
-      {% if post.slidesurl %}<a href="{{ post.slidesurl }}" class="btn btn--inverse">Slides</a>{% endif %}
-      {% if post.videourl %}<a href="{{ post.videourl }}" class="btn btn--inverse">Video</a>{% endif %}
-      {% if post.bibtex %}<button class="btn btn--inverse collapsible">BibTeX</button>{% endif %}
+      {% if post.paperurl %}<a href="{{ post.paperurl }}" class="btn btn--ghost">Paper</a>{% endif %}
+      {% if post.preprinturl %}<a href="{{ post.preprinturl }}" class="btn btn--ghost">Preprint</a>{% endif %}
+      {% if post.abstract %}<button class="btn btn--ghost collapsible">Abstract</button>{% endif %}
+      {% if post.codeurl %}<a href="{{ post.codeurl }}" class="btn btn--ghost">Code</a>{% endif %}
+      {% if post.slidesurl %}<a href="{{ post.slidesurl }}" class="btn btn--ghost">Slides</a>{% endif %}
+      {% if post.videourl %}<a href="{{ post.videourl }}" class="btn btn--ghost">Video</a>{% endif %}
+      {% if post.bibtex %}<button class="btn btn--ghost collapsible">BibTeX</button>{% endif %}
     </div>
 
     {% if post.abstract %}
@@ -81,14 +81,25 @@
     color: var(--global-text-color-light);
   }
   .publication-links {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
-  .publication-links .btn {
+  .publication-links .btn--ghost {
+    background-color: transparent;
+    border: 1px solid var(--global-link-color);
+    color: var(--global-link-color);
+    padding: 0.25rem 0.75rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
-    padding: 0.25rem 0.75rem;
     font-size: 0.8rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
+  .publication-links .btn--ghost:hover {
+    background-color: var(--global-link-color);
+    color: #fff;
+    text-decoration: none;
   }
   .collapsible-content {
     display: none;
@@ -101,6 +112,8 @@
     line-height: 1.4;
     max-height: 200px;
     overflow-y: auto;
+    width: fit-content;
+    max-width: 100%;
   }
   .collapsible-content pre {
     margin: 0;
