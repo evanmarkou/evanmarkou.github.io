@@ -21,56 +21,58 @@
 </div>
 
 <script>
-  (function() {
-    var containers = document.querySelectorAll('.news-list');
-    containers.forEach(function(container) {
-      var visibleCount = parseInt(container.getAttribute('data-visible-count') || '5', 10);
-      var items = container.querySelectorAll('.news-item');
-      var itemArray = Array.prototype.slice.call(items);
-      var newDays = parseInt(container.getAttribute('data-new-days') || '60', 10);
-      var btn = container.querySelector('.news-toggle');
+  document.addEventListener('DOMContentLoaded', function() {
+    (function() {
+      var containers = document.querySelectorAll('.news-list');
+      containers.forEach(function(container) {
+        var visibleCount = parseInt(container.getAttribute('data-visible-count') || '5', 10);
+        var items = container.querySelectorAll('.news-item');
+        var itemArray = Array.prototype.slice.call(items);
+        var newDays = parseInt(container.getAttribute('data-new-days') || '60', 10);
+        var btn = container.querySelector('.news-toggle');
 
-      // mark recent items as new
-      var now = new Date();
-      itemArray.forEach(function(li) {
-        var ds = li.getAttribute('data-date');
-        if (!ds) return;
-        var d = new Date(ds);
-        if (isNaN(d)) return;
-        var diffDays = Math.floor((now - d) / (1000 * 60 * 60 * 24));
-        if (diffDays <= newDays) {
-          var badge = li.querySelector('.news-badge');
-          if (badge) badge.removeAttribute('hidden');
-          li.classList.add('is-new');
-        }
-      });
-
-      if (!btn) return;
-
-      function setExpanded(expanded) {
-        btn.setAttribute('aria-expanded', String(expanded));
-        btn.setAttribute('aria-label', expanded ? 'Show fewer news items' : 'Show more news items');
-        btn.textContent = expanded ? '[less]' : '[more]';
-        itemArray.forEach(function(li, idx) {
-          if (idx >= visibleCount) {
-            if (expanded) {
-              li.removeAttribute('hidden');
-            } else {
-              li.setAttribute('hidden', '');
-            }
+        // mark recent items as new
+        var now = new Date();
+        itemArray.forEach(function(li) {
+          var ds = li.getAttribute('data-date');
+          if (!ds) return;
+          var d = new Date(ds);
+          if (isNaN(d)) return;
+          var diffDays = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+          if (diffDays <= newDays) {
+            var badge = li.querySelector('.news-badge');
+            if (badge) badge.removeAttribute('hidden');
+            li.classList.add('is-new');
           }
         });
-      }
 
-      // ensure initial state text is correct
-      setExpanded(false);
+        if (!btn) return;
 
-      btn.addEventListener('click', function() {
-        var expanded = btn.getAttribute('aria-expanded') === 'true';
-        setExpanded(!expanded);
+        function setExpanded(expanded) {
+          btn.setAttribute('aria-expanded', String(expanded));
+          btn.setAttribute('aria-label', expanded ? 'Show fewer news items' : 'Show more news items');
+          btn.textContent = expanded ? '[less]' : '[more]';
+          itemArray.forEach(function(li, idx) {
+            if (idx >= visibleCount) {
+              if (expanded) {
+                li.removeAttribute('hidden');
+              } else {
+                li.setAttribute('hidden', '');
+              }
+            }
+          });
+        }
+
+        // ensure initial state text is correct
+        setExpanded(false);
+
+        btn.addEventListener('click', function() {
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          setExpanded(!expanded);
+        });
       });
-    });
-  })();
+    })();
+  });
   </script>
 
 <style>
@@ -79,7 +81,7 @@
   .news-item { margin: 0.25rem 0; }
   .news-date { font-variant-numeric: tabular-nums; color: #666; }
   .news-link { text-decoration: none; color: inherit; }
-  .news-link:hover { text-decoration: none; color: inherit; }
+  .news-link:hover { text-decoration: none !important; color: inherit; }
   .news-badge { display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: #2a7ae2; margin-left: 0.5rem; vertical-align: middle; }
   .news-item.is-new .news-date { color: #2a7ae2; }
   .news-toggle { margin-top: 0.5rem; background: none; border: 0; padding: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: none; }
