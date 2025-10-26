@@ -23,7 +23,7 @@ repository               : "evanmarkou/evanmarkou.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.jpg"
+  avatar           : "profile.JPG"
   name             : "Evan Markou"
   pronouns         : # example: "she/her"  
   bio              : "Computer Scientist and Mathematician"
