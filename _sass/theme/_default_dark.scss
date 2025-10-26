@@ -52,4 +52,6 @@ html[data-theme="dark"] {
     --global-text-color-light           : #{$light-gray};
     --global-thead-color                : #{$background-lighter};
     --new-indicator-color               : #f89406; // Orange for new items
+    --btn-ghost-hover-bg                : #{$link-light};
+    --btn-ghost-hover-text              : #{$background};
 }

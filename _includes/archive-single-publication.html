@@ -96,8 +96,16 @@
     text-decoration: none;
     transition: all 0.2s ease-in-out;
   }
+  html[data-theme="dark"] .publication-links .btn--ghost {
+    /* No change needed for dark theme, it works as expected */
+  }
+  html:not([data-theme="dark"]) .publication-links .btn--ghost {
+    border-color: var(--global-masthead-link-color-hover);
+    color: var(--global-masthead-link-color-hover);
+  }
   .publication-links .btn--ghost:hover {
     background-color: var(--global-link-color);
+    border-color: var(--global-link-color);
     color: #fff;
     text-decoration: none;
   }
