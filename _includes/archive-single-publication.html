@@ -84,7 +84,13 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-  .publication-links .btn--ghost {
+  
+  /*
+   * Button Styles (using specificity to override theme defaults)
+  */
+
+  /* Default state for all themes */
+  .page__content .publication-links .btn--ghost {
     background-color: transparent;
     border: 1px solid var(--global-link-color);
     color: var(--global-link-color);
@@ -95,18 +101,30 @@
     border-radius: 4px;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
- 
   }
-  html:not([data-theme="dark"]) .publication-links .btn--ghost {
-    border-color: #555 !important; /* A solid, dark grey for visibility */
-    color: #555 !important;       /* A solid, dark grey for visibility */
+  
+  /* Light theme override for better visibility */
+  html:not([data-theme="dark"]) .page__content .publication-links .btn--ghost {
+    border-color: #555;
+    color: #555;
   }
-  .publication-links .btn--ghost:hover {
-    background-color: var(--global-link-color) !important;
-    border-color: var(--global-link-color) !important;
-    color: #fff !important;
+  
+  /* Hover state for light theme */
+  html:not([data-theme="dark"]) .page__content .publication-links .btn--ghost:hover {
+    background-color: #555;
+    border-color: #555;
+    color: #fff;
     text-decoration: none;
   }
+
+  /* Hover state for dark theme */
+  html[data-theme="dark"] .page__content .publication-links .btn--ghost:hover {
+    background-color: var(--btn-ghost-hover-bg);
+    border-color: var(--btn-ghost-hover-bg);
+    color: var(--btn-ghost-hover-text);
+    text-decoration: none;
+  }
+
   .collapsible-content {
     display: none;
     margin-top: 1rem;
