@@ -8,7 +8,7 @@ author_profile: true
 {% include base_path %}
 
 {% assign publications_by_category = site.publications | group_by: "category" %}
-{% assign category_order = "books,manuscripts,conferences" | split: "," %}
+{% assign category_order = "books,manuscripts,conferences,preprints" | split: "," %}
 
 <div class="publications-archive">
   {% for category_name in category_order %}
