@@ -1,0 +1,80 @@
+/* ==========================================================================
+   CUSTOM STYLES
+   ========================================================================== */
+
+/*
+   Page heading refinements
+   ========================================================================== */
+
+.page .page__content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--global-text-color);
+  letter-spacing: 0.2px;
+}
+
+.page .page__content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--global-text-color);
+}
+
+.page .page__content h2 + p,
+.page .page__content h3 + p {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .page .page__content h2 { letter-spacing: 0.3px; }
+}
+
+
+/*
+   News list component
+   ========================================================================== */
+
+.news-list { margin: 1rem 0; }
+.news-items { list-style: disc; padding-left: 1.25rem; margin: 0; }
+.news-item { margin: 0.25rem 0; }
+
+.news-date {
+  font-variant-numeric: tabular-nums;
+  color: var(--global-text-color-light);
+  font-weight: bold;
+}
+
+.news-badge {
+  display: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--global-link-color);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.news-item.is-new .news-date {
+  color: var(--global-link-color);
+}
+
+.news-item.is-new .news-badge {
+  display: inline-block;
+}
+
+.news-toggle {
+  margin-top: 0.5rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--global-base-color);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.news-toggle:hover {
+  text-decoration: underline;
+}
