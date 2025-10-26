@@ -84,15 +84,10 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-  
-  /*
-   * Button Styles (using specificity to override theme defaults)
-  */
-
-  /* Default state for all themes - will be overridden below */
-  .page__content .publication-links .btn--ghost {
-    background: transparent;
-    border: 1px solid;
+  .publication-links .btn--ghost {
+    background-color: transparent;
+    border: 1px solid var(--global-link-color);
+    color: var(--global-link-color);
     padding: 0.25rem 0.75rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
@@ -101,35 +96,16 @@
     text-decoration: none;
     transition: all 0.2s ease-in-out;
   }
-  
-  /* Light theme: dark grey border and text */
-  html:not([data-theme="dark"]) .page__content .publication-links .btn--ghost {
-    border-color: #555;
-    color: #555;
+  html:not([data-theme="dark"]) .publication-links .btn--ghost {
+    border-color: #555 !important;
+    color: #555 !important;
   }
-  
-  /* Dark theme: link color border and text */
-  html[data-theme="dark"] .page__content .publication-links .btn--ghost {
-    border-color: var(--global-link-color);
-    color: var(--global-link-color);
-  }
-  
-  /* Hover state for light theme */
-  html:not([data-theme="dark"]) .page__content .publication-links .btn--ghost:hover {
-    background-color: #555;
-    border-color: #555;
-    color: #fff;
+  .publication-links .btn--ghost:hover {
+    background-color: var(--global-link-color) !important;
+    border-color: var(--global-link-color) !important;
+    color: #fff !important;
     text-decoration: none;
   }
-
-  /* Hover state for dark theme */
-  html[data-theme="dark"] .page__content .publication-links .btn--ghost:hover {
-    background-color: var(--btn-ghost-hover-bg);
-    border-color: var(--btn-ghost-hover-bg);
-    color: var(--btn-ghost-hover-text);
-    text-decoration: none;
-  }
-
   .collapsible-content {
     display: none;
     margin-top: 1rem;
