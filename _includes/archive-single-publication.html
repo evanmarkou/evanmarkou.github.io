@@ -121,13 +121,25 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+  console.log("Archive page script loaded.");
   var collapsibles = document.querySelectorAll(".publication-entry .collapsible");
+  console.log("Found collapsible buttons:", collapsibles);
   
   collapsibles.forEach(function(collapsible) {
     collapsible.addEventListener("click", function() {
+      console.log("Button clicked:", this);
       var targetId = this.getAttribute('data-target');
+      console.log("Target ID:", targetId);
       var content = document.getElementById(targetId);
+      console.log("Target content element:", content);
+      
+      if (!content) {
+        console.error("Could not find content element with ID:", targetId);
+        return;
+      }
+
       var isVisible = content.style.display === "block";
+      console.log("Is visible?", isVisible);
 
       // Hide all collapsible content
       var allContent = document.querySelectorAll('.collapsible-content');
@@ -144,6 +156,9 @@ document.addEventListener("DOMContentLoaded", function() {
       if (!isVisible) {
         content.style.display = 'block';
         this.classList.add('active');
+        console.log("Made content visible.");
+      } else {
+        console.log("Made content hidden.");
       }
     });
   });
