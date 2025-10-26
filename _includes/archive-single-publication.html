@@ -15,23 +15,24 @@
     <div class="publication-links">
       {% if post.paperurl %}<a href="{{ post.paperurl }}" class="btn btn--ghost">Paper</a>{% endif %}
       {% if post.preprinturl %}<a href="{{ post.preprinturl }}" class="btn btn--ghost">Preprint</a>{% endif %}
-      {% if post.abstract %}
-        <button class="btn btn--ghost collapsible">Abstract</button>
-        <div class="collapsible-content">
-          <pre><code>{{ post.abstract }}</code></pre>
-        </div>
-      {% endif %}
+      {% if post.abstract %}<button class="btn btn--ghost collapsible" data-target="abstract-{{ post.slug }}">Abstract</button>{% endif %}
       {% if post.codeurl %}<a href="{{ post.codeurl }}" class="btn btn--ghost">Code</a>{% endif %}
       {% if post.slidesurl %}<a href="{{ post.slidesurl }}" class="btn btn--ghost">Slides</a>{% endif %}
       {% if post.videourl %}<a href="{{ post.videourl }}" class="btn btn--ghost">Video</a>{% endif %}
-      {% if post.bibtex %}
-        <button class="btn btn--ghost collapsible">BibTeX</button>
-        <div class="collapsible-content">
-          <pre><code>{{ post.bibtex }}</code></pre>
-        </div>
-      {% endif %}
+      {% if post.bibtex %}<button class="btn btn--ghost collapsible" data-target="bibtex-{{ post.slug }}">BibTeX</button>{% endif %}
     </div>
 
+    {% if post.abstract %}
+    <div id="abstract-{{ post.slug }}" class="collapsible-content">
+      <pre><code>{{ post.abstract }}</code></pre>
+    </div>
+    {% endif %}
+    
+    {% if post.bibtex %}
+    <div id="bibtex-{{ post.slug }}" class="collapsible-content">
+      <pre><code>{{ post.bibtex }}</code></pre>
+    </div>
+    {% endif %}
   </div>
 </div>
 
@@ -120,35 +121,28 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  var collapsibles = document.querySelectorAll(".publication-links .collapsible");
-
+  var collapsibles = document.querySelectorAll(".publication-entry .collapsible");
+  
   collapsibles.forEach(function(collapsible) {
     collapsible.addEventListener("click", function() {
-      // Find the collapsible content div within the same parent
-      var content = this.parentElement.querySelector('.collapsible-content');
+      var targetId = this.getAttribute('data-target');
+      var content = document.getElementById(targetId);
       var isVisible = content.style.display === "block";
 
-      // Hide all other collapsible content sections
-      var allContent = document.querySelectorAll('.publication-links .collapsible-content');
+      // Hide all collapsible content
+      var allContent = document.querySelectorAll('.collapsible-content');
       allContent.forEach(function(item) {
-        if (item !== content) {
-          item.style.display = 'none';
-        }
+        item.style.display = 'none';
       });
-      
-      var allButtons = document.querySelectorAll('.publication-links .collapsible');
-      allButtons.forEach(function(button) {
-        if (button !== this) {
-          button.classList.remove('active');
-        }
-      }.bind(this));
 
-      // Toggle the current section
-      if (isVisible) {
-        content.style.display = "none";
-        this.classList.remove('active');
-      } else {
-        content.style.display = "block";
+      var allButtons = document.querySelectorAll('.publication-entry .collapsible');
+      allButtons.forEach(function(button) {
+        button.classList.remove('active');
+      });
+
+      // Toggle the target content
+      if (!isVisible) {
+        content.style.display = 'block';
         this.classList.add('active');
       }
     });
