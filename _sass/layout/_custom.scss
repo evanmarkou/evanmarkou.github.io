@@ -51,13 +51,13 @@
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: var(--global-link-color);
+  background: var(--new-indicator-color);
   margin-left: 0.5rem;
   vertical-align: middle;
 }
 
 .news-item.is-new .news-date {
-  color: var(--global-link-color);
+  color: var(--new-indicator-color);
 }
 
 .news-item.is-new .news-badge {
