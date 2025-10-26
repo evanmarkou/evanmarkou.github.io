@@ -7,8 +7,26 @@ author_profile: true
 
 {% include base_path %}
 
+<div class="projects-archive">
+  {% for project in site.projects reversed %}
+    <div class="project-entry">
+      <h3 class="project-title">{{ project.title }}</h3>
+      <p class="project-excerpt">{{ project.excerpt }}</p>
+      {% if project.repo %}
+        <a href="{{ project.repo }}" class="btn btn--inverse">View on GitHub</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
 
-{% for post in site.projects %}
-  {% include archive-single.html %}
-{% endfor %}
+<style>
+  .project-entry {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--global-border-color);
+  }
+  .project-title {
+    margin-top: 0;
+  }
+</style>
 
