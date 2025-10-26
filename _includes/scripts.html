@@ -10,3 +10,11 @@
     document.title = "{{ site.title | escape }}";
   });
 </script>
+
+{% if site.search == true or page.search == true %}
+  <script src="{{ base_path }}/assets/js/lunr/lunr.min.js"></script>
+{% endif %}
+
+<script src="{{ base_path }}/assets/js/publication.js"></script>
+
+<script src="{{ base_path }}/assets/js/{{ site.data.ui-text[site.locale].script | default: "main.min.js" }}"></script>
