@@ -4,32 +4,28 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
+{% assign publications_by_category = site.publications | group_by: "category" %}
+{% assign category_order = "books,manuscripts,conferences" | split: "," %}
+
+<div class="publications-archive">
+  {% for category_name in category_order %}
+    {% for group in publications_by_category %}
+      {% if group.name == category_name %}
+        {% assign category_title = site.publication_category[category_name].title | default: category_name %}
+        <section class="publication-category">
+          <h2 class="archive__subtitle">{{ category_title }}</h2>
+          <div class="list__wrapper">
+            {% for post in group.items reversed %}
+              {% include archive-single-publication.html %}
+            {% endfor %}
+          </div>
+        </section>
       {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
     {% endfor %}
   {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+</div>
 
 
 

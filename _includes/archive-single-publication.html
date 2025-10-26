@@ -1,0 +1,130 @@
+{% include base_path %}
+<div class="publication-entry">
+  <div class="publication-thumbnail">
+    {% if post.thumbnail %}
+      <img src="{{ post.thumbnail | prepend: base_path }}" alt="Thumbnail for {{ post.title }}">
+    {% else %}
+      <div class="placeholder"></div>
+    {% endif %}
+  </div>
+  <div class="publication-details">
+    <h3 class="publication-title"><a href="{{ post.url | prepend: base_path }}">{{ post.title }}</a></h3>
+    <p class="publication-authors">{{ post.authors }}</p>
+    <p class="publication-venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
+    
+    <div class="publication-links">
+      {% if post.paperurl %}<a href="{{ post.paperurl }}" class="btn btn--inverse">Paper</a>{% endif %}
+      {% if post.preprinturl %}<a href="{{ post.preprinturl }}" class="btn btn--inverse">Preprint</a>{% endif %}
+      {% if post.abstract %}<button class="btn btn--inverse collapsible">Abstract</button>{% endif %}
+      {% if post.codeurl %}<a href="{{ post.codeurl }}" class="btn btn--inverse">Code</a>{% endif %}
+      {% if post.slidesurl %}<a href="{{ post.slidesurl }}" class="btn btn--inverse">Slides</a>{% endif %}
+      {% if post.videourl %}<a href="{{ post.videourl }}" class="btn btn--inverse">Video</a>{% endif %}
+      {% if post.bibtex %}<button class="btn btn--inverse collapsible">BibTeX</button>{% endif %}
+    </div>
+
+    {% if post.abstract %}
+    <div class="collapsible-content">
+      <pre><code>{{ post.abstract }}</code></pre>
+    </div>
+    {% endif %}
+    
+    {% if post.bibtex %}
+    <div class="collapsible-content">
+      <pre><code>{{ post.bibtex }}</code></pre>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .publication-entry {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--global-border-color);
+  }
+  .publication-thumbnail {
+    flex: 0 0 120px;
+    margin-right: 1.5rem;
+  }
+  .publication-thumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .publication-thumbnail .placeholder {
+    width: 120px;
+    height: 160px;
+    background: #f0f0f0;
+    border-radius: 4px;
+  }
+  .publication-details {
+    flex: 1;
+  }
+  .publication-title {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    font-size: 1.2rem;
+  }
+  .publication-title a {
+    text-decoration: none;
+    color: var(--global-text-color);
+  }
+  .publication-title a:hover {
+    text-decoration: underline;
+  }
+  .publication-authors, .publication-venue {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+    color: var(--global-text-color-light);
+  }
+  .publication-links {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .publication-links .btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .collapsible-content {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--global-border-color);
+    border-radius: 4px;
+    background: var(--global-code-background-color);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .collapsible-content pre {
+    margin: 0;
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var collapsibles = document.querySelectorAll(".publication-entry .collapsible");
+  
+  collapsibles.forEach(function(collapsible) {
+    collapsible.addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.parentElement.nextElementSibling;
+      while(content && !content.classList.contains('collapsible-content')) {
+        content = content.nextElementSibling;
+      }
+      
+      if (content && content.style.display === "block") {
+        content.style.display = "none";
+      } else if (content) {
+        content.style.display = "block";
+      }
+    });
+  });
+});
+</script>
