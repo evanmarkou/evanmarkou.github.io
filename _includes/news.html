@@ -20,61 +20,6 @@
   {% endif %}
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    (function() {
-      var containers = document.querySelectorAll('.news-list');
-      containers.forEach(function(container) {
-        var visibleCount = parseInt(container.getAttribute('data-visible-count') || '5', 10);
-        var items = container.querySelectorAll('.news-item');
-        var itemArray = Array.prototype.slice.call(items);
-        var newDays = parseInt(container.getAttribute('data-new-days') || '60', 10);
-        var btn = container.querySelector('.news-toggle');
-
-        // mark recent items as new
-        var now = new Date();
-        itemArray.forEach(function(li) {
-          var ds = li.getAttribute('data-date');
-          if (!ds) return;
-          var d = new Date(ds);
-          if (isNaN(d)) return;
-          var diffDays = Math.floor((now - d) / (1000 * 60 * 60 * 24));
-          if (diffDays <= newDays) {
-            var badge = li.querySelector('.news-badge');
-            if (badge) badge.removeAttribute('hidden');
-            li.classList.add('is-new');
-          }
-        });
-
-        if (!btn) return;
-
-        function setExpanded(expanded) {
-          btn.setAttribute('aria-expanded', String(expanded));
-          btn.setAttribute('aria-label', expanded ? 'Show fewer news items' : 'Show more news items');
-          btn.textContent = expanded ? '[less]' : '[more]';
-          itemArray.forEach(function(li, idx) {
-            if (idx >= visibleCount) {
-              if (expanded) {
-                li.removeAttribute('hidden');
-              } else {
-                li.setAttribute('hidden', '');
-              }
-            }
-          });
-        }
-
-        // ensure initial state text is correct
-        setExpanded(false);
-
-        btn.addEventListener('click', function() {
-          var expanded = btn.getAttribute('aria-expanded') === 'true';
-          setExpanded(!expanded);
-        });
-      });
-    })();
-  });
-  </script>
-
 <style>
   .news-list { margin: 1rem 0; }
   .news-items { list-style: disc; padding-left: 1.25rem; margin: 0; }
