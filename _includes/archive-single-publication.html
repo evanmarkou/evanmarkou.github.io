@@ -124,25 +124,23 @@ document.addEventListener("DOMContentLoaded", function() {
   
   collapsibles.forEach(function(collapsible) {
     collapsible.addEventListener("click", function() {
-      this.classList.toggle("active");
       var content = this.nextElementSibling;
-      
-      if (content && content.classList.contains('collapsible-content')) {
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          // Hide all other collapsible content before showing the new one
-          var allContent = document.querySelectorAll('.publication-links .collapsible-content');
-          allContent.forEach(function(item) {
-            item.style.display = 'none';
-          });
-          var allButtons = document.querySelectorAll('.publication-links .collapsible');
-          allButtons.forEach(function(button) {
-            if(button !== this) button.classList.remove('active');
-          }.bind(this));
-          
-          content.style.display = "block";
-        }
+      var isVisible = content.style.display === "block";
+
+      // First, hide all contents and deactivate all buttons
+      var allContent = document.querySelectorAll('.publication-links .collapsible-content');
+      allContent.forEach(function(item) {
+        item.style.display = 'none';
+      });
+      var allButtons = document.querySelectorAll('.publication-links .collapsible');
+      allButtons.forEach(function(button) {
+        button.classList.remove('active');
+      });
+
+      // If the content was not visible, show it and activate the button
+      if (!isVisible) {
+        content.style.display = "block";
+        this.classList.add('active');
       }
     });
   });
