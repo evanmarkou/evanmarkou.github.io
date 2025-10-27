@@ -8,4 +8,4 @@ I have been fortunate to co-supervise undergraduate and master's students on a v
 *   **Daniel Wang** (Undergraduate, PhB). Project: *Backpropagation-Free Gradient Estimation for Scalable Deep Learning* (Semester 1, 2025). Co-supervised with [Dylan Campbell](https://sites.google.com/view/djcampbell).
 
 
-*   **Shitong Wang** (M.S. in Mathematics). Thesis: *Advancing parameter-free and architecture aware optimisation for deep networks* (Semester 1 & 2, 2026). Co-supervised with [Dylan Campbell](https://sites.google.com/view/djcampbell).
+*   **Shitong Wang** (MSc in Mathematical Sciences). Thesis: *Advancing parameter-free and architecture aware optimisation for deep networks* (Semester 1 & 2, 2026). Co-supervised with [Dylan Campbell](https://sites.google.com/view/djcampbell).
