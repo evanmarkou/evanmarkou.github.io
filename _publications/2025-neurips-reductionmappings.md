@@ -2,7 +2,7 @@
 title: "Sharper Convergence Rates for Nonconvex Optimisation via Reduction Mappings"
 collection: publications
 category: conferences
-date: 2025-12-01
+date: 2025-12-04
 venue: 'Advances in Neural Information Processing Systems (NeurIPS)'
 award: "(Spotlight)"
 authors: 'Evan Markou, Thalaiyasingam Ajanthan, and Stephen Gould' 
