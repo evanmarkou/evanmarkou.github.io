@@ -20,6 +20,5 @@ bibtex: |-
     title = {Guiding Neural Collapse: Optimising Towards the Nearest Simplex Equiangular Tight Frame},
     url = {https://proceedings.neurips.cc/paper_files/paper/2024/file/3eb660055cdcdc9a545a0b16c1eff80d-Paper-Conference.pdf},
     volume = {37},
-    year = {2024}
-}
+    year = {2024}}
 ---
