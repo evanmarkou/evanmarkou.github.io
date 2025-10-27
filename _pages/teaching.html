@@ -7,18 +7,37 @@ author_profile: true
 
 {% include base_path %}
 
+{% assign tutoring_items = site.teaching | where: "category", "Tutoring" | sort: 'date' | reverse %}
+{% assign supervision_items = site.teaching | where: "category", "Supervision" | sort: 'date' | reverse %}
+
 <div class="teaching-archive">
-  {% for teaching_item in site.teaching reversed %}
-    <div class="teaching-entry">
-      <h3 class="teaching-course">{{ teaching_item.course }}</h3>
-      <p class="teaching-details">
-        <strong>Institution:</strong> {{ teaching_item.institution }} | 
-        <strong>Role:</strong> {{ teaching_item.role }} | 
-        <strong>Date:</strong> {{ teaching_item.date | date: "%B %Y" }}
-      </p>
+  
+  {% if tutoring_items.size > 0 %}
+  <section>
+    <h2 class="archive__subtitle">Tutoring</h2>
+    {% for teaching_item in tutoring_items %}
+      <div class="teaching-entry">
+        <h3 class="teaching-course">{{ teaching_item.course }}</h3>
+        <p class="teaching-details">
+          <strong>Institution:</strong> {{ teaching_item.institution }} | 
+          <strong>Role:</strong> {{ teaching_item.role }} | 
+          <strong>Date:</strong> {{ teaching_item.date | date: "%B %Y" }}
+        </p>
+        {{ teaching_item.content | markdownify }}
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+  
+  {% if supervision_items.size > 0 %}
+  <section>
+    <h2 class="archive__subtitle">Supervision</h2>
+    {% for teaching_item in supervision_items %}
       {{ teaching_item.content | markdownify }}
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </section>
+  {% endif %}
+
 </div>
 
 <style>
