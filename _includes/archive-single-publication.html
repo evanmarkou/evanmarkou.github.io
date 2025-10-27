@@ -9,7 +9,9 @@
   </div>
   <div class="publication-details">
     <h3 class="publication-title">{{ post.title }}</h3>
-    <p class="publication-authors">{{ post.authors }}</p>
+    {%- assign author_name = site.author.name -%}
+    {%- assign bold_author_name = author_name | prepend: '**' | append: '**' -%}
+    <p class="publication-authors">{{ post.authors | replace: author_name, bold_author_name }}</p>
     <p class="publication-venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
     
     <div class="publication-links">
