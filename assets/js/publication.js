@@ -28,4 +28,23 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
+
+  var copyButtons = document.querySelectorAll('.btn-copy-bibtex');
+  copyButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var container = this.parentElement;
+      var codeBlock = container.querySelector('pre code');
+      var textToCopy = codeBlock.innerText;
+
+      navigator.clipboard.writeText(textToCopy).then(function() {
+        var originalIcon = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(function() {
+          button.innerHTML = originalIcon;
+        }, 2000); // Revert icon after 2 seconds
+      }).catch(function(err) {
+        console.error('Failed to copy text: ', err);
+      });
+    });
+  });
 });

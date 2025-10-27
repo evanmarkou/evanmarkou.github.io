@@ -31,7 +31,10 @@
     {% endif %}
     
     {% if post.bibtex %}
-    <div id="bibtex-{{ post.slug }}" class="collapsible-content">
+    <div id="bibtex-{{ post.slug }}" class="collapsible-content bibtex-container">
+      <button class="btn-copy-bibtex" title="Copy to clipboard">
+        <i class="fas fa-clipboard" aria-hidden="true"></i>
+      </button>
       <pre><code>{{ post.bibtex }}</code></pre>
     </div>
     {% endif %}
@@ -116,6 +119,30 @@
   .collapsible-content--text {
     background: var(--global-bg-color);
     font-size: 1em;
+    text-align: justify;
+  }
+  .bibtex-container {
+    position: relative;
+  }
+  .btn-copy-bibtex {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--global-border-color);
+    border: 1px solid var(--global-border-color);
+    color: var(--global-text-color);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .btn-copy-bibtex:hover {
+    opacity: 1;
+  }
+  .btn-copy-bibtex .fa-check {
+    color: #4CAF50; /* Green checkmark for success */
   }
   .collapsible-content pre {
     margin: 0;
