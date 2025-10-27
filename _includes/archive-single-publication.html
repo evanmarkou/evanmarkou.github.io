@@ -25,8 +25,8 @@
     </div>
 
     {% if post.abstract %}
-    <div id="abstract-{{ post.slug }}" class="collapsible-content">
-      <pre><code>{{ post.abstract }}</code></pre>
+    <div id="abstract-{{ post.slug }}" class="collapsible-content collapsible-content--text">
+      {{ post.abstract | markdownify }}
     </div>
     {% endif %}
     
@@ -112,6 +112,10 @@
     font-size: 0.85rem;
     line-height: 1.4;
     max-width: 100%;
+  }
+  .collapsible-content--text {
+    background: var(--global-bg-color);
+    font-size: 1em;
   }
   .collapsible-content pre {
     margin: 0;
