@@ -16,15 +16,7 @@ author_profile: true
   <section>
     <h2 class="archive__subtitle">Tutoring</h2>
     {% for teaching_item in tutoring_items %}
-      <div class="teaching-entry">
-        <h3 class="teaching-course">{{ teaching_item.course }}</h3>
-        <p class="teaching-details">
-          <strong>Institution:</strong> {{ teaching_item.institution }} | 
-          <strong>Role:</strong> {{ teaching_item.role }} | 
-          <strong>Date:</strong> {{ teaching_item.date | date: "%B %Y" }}
-        </p>
-        {{ teaching_item.content | markdownify }}
-      </div>
+      {{ teaching_item.content | markdownify }}
     {% endfor %}
   </section>
   {% endif %}
