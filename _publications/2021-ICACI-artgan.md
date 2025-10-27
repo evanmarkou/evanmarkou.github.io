@@ -3,7 +3,7 @@ title: "ARTGAN: Artwork Restoration using Generative Adversarial Networks"
 collection: publications
 category: conferences
 date: 2021-05-14
-venue: '13th International Conference on Advanced Computational Intelligence (ICACI) '
+venue: '13th International Conference on Advanced Computational Intelligence (ICACI)'
 authors: 'Abhijit Adhikary, Namas Bhandari, Evan Markou, and Siddharth Sachan'
 thumbnail: '/images/500x300.png' # Placeholder image
 paperurl: 'https://academicpages.github.io/files/2021-icaci-artgan.pdf'
