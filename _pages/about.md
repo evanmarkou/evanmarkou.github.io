@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Lorem ipsum 
+Lorem ipsum [jujuj](/publications/)
 
 ## News
 {% include news.html id="about-news" visible_count=5 %}
