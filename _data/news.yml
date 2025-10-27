@@ -1,13 +1,17 @@
-- date: 2025-10-01
-  text: "Passed PhD proposal milestone"
-- date: 2025-09-08
-  text: "Paper accepted at [Conference XYZ 2025](https://www.google.com/search?q=Conference+XYZ+2025)"
-- date: 2024-12-15
-  text: "Presented at ABC Workshop"
-- date: 2024-10-05
-  text: "Teaching assistant for Course 101"
-- date: 2024-06-01
-  text: "Started PhD at ANU"
-- date: 2023-11-20
-  text: "Joined Research Group"
+- date: 2024-11-14
+  text: "I will be attending the [AMSI Summer School 2025](https://amsi.org.au/events/event/amsi-summer-school-2025/) on January 2025 to study optimal transport, Monge-Ampère equations, and elliptic PDEs."- date: 2024-09-15
+- date: 2024-10-01
+  text: "Our team won second place at the 24-hour [ANU Hackathon 2024](https://www.anu.edu.au/students/student-life/events-stories/anu-hackathon-produces-innovative-ai-enabled-healthcare-solutions) for building a system to detect early-stage cognitive decline using visual biomarkers."-
+- date: 2024-09-15
+  text: "I got a paper accepted at NeurIPS 2024 on neural collapse!"
+- date: 2024-07-01
+  text: "I will be attending ICML 2024 in Vienna, Austria."
+- date: 2024-05-1
+  text: "I will be attending the [Annual Graduate School in Mathematical Aspects of Data Science](https://maths.anu.edu.au/news-events/events/annual-graduate-school-mathematical-aspects-data-science) at Darwin, Northern Territory, Australia."
+- date: 2023-11-15
+  text: "I will be giving a talk at MATRIX-AMSI [PhD Symposium: Rough Path Theory 2023](https://www.matrix-inst.org.au/events/phd-student-symposium-rough-path-theory-2023/) on neural collapse and local elasticity of neural networks."
+- date: 2023-10-26
+  text: "I will participate in MATRIX-AMSI [PhD Symposium: Rough Path Theory 2023](https://www.matrix-inst.org.au/events/phd-student-symposium-rough-path-theory-2023/) at Creswick campus of The University of Melbourne."
+- date: 2023-02-07
+  text: "Started my PhD at ANU"
 
