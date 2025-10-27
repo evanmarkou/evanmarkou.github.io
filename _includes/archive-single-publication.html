@@ -11,7 +11,7 @@
     <h3 class="publication-title">{{ post.title }}</h3>
     {%- assign author_name = site.author.name -%}
     {%- assign bold_author_name = author_name | prepend: '**' | append: '**' -%}
-    <p class="publication-authors">{{ post.authors | replace: author_name, bold_author_name }}</p>
+    <p class="publication-authors">{{ post.authors | replace: author_name, bold_author_name | markdownify | remove: '<p>' | remove: '</p>' }}</p>
     <p class="publication-venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
     
     <div class="publication-links">
@@ -42,6 +42,7 @@
   .publication-entry {
     display: flex;
     align-items: flex-start;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--global-border-color);
@@ -110,8 +111,6 @@
     background: var(--global-code-background-color);
     font-size: 0.85rem;
     line-height: 1.4;
-    max-height: 200px;
-    overflow-y: auto;
     max-width: 100%;
   }
   .collapsible-content pre {
