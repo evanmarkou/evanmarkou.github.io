@@ -5,7 +5,7 @@ category: conferences
 date: 2024-12-01
 venue: 'Advances in Neural Information Processing Systems (NeurIPS)'
 authors: 'Evan Markou, Thalaiyasingam Ajanthan, and Stephen Gould' 
-thumbnail: '/images/publication-template.png' # Placeholder image
+thumbnail: '/images/publication2-template.png' # Placeholder image
 paperurl: 'https://evanmarkou.github.io/files/2024-neurips-guidingnc.pdf'
 codeurl: 'https://github.com/evanmarkou/guiding-neural-collapse'
 videourl: 'https://www.youtube.com/watch?v=bcCQBFN4OLM'
