@@ -4,7 +4,7 @@ collection: publications
 category: conferences
 date: 2025-12-01
 venue: 'Australasian Joint Conference on Artificial Intelligence (AJCAI)'
-award: '(Long Oral)'
+award: '(Best Paper Award)'
 authors: 'Daniel Wang, Evan Markou, and Dylan Campbell' 
 thumbnail: '/images/publication2-template.png' # Placeholder image
 paperurl: 'https://evanmarkou.github.io/files/2025-ajcai-backpropfree.pdf'
