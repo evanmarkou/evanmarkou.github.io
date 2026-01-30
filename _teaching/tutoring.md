@@ -12,6 +12,7 @@ Throughout my time at ANU, I have had the opportunity to be a tutor (US/Europe e
 
 I have tutored the following courses:
 
+*   **Deep Learning** ([COMP3242/6242](https://programsandcourses.anu.edu.au/course/comp3242)) - *1 semester*
 *   **Advanced Topics in Machine Learning** ([COMP4680/8650](https://programsandcourses.anu.edu.au/course/comp4680)) - *2 semesters*
 *   **Advanced Topics in Deep Learning for Computer Vision** ([COMP8536](https://programsandcourses.anu.edu.au/2024/course/comp8536)) - *2 semesters*
 *   **Statistical Machine Learning** ([COMP4670/8600](https://programsandcourses.anu.edu.au/course/comp4670)) - *3 semesters*
