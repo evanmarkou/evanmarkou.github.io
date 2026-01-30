@@ -3,7 +3,7 @@ collection: teaching
 category: Supervision
 ---
 
-I have been fortunate to co-supervise undergraduate and master's students on a variety of topics. I typically supervise one student per semester on a project related to my research interests. If you are a student at ANU and are interested in working together, please look for my project postings on the [ANU student opportunities](https://systems.anu.edu.au/study/student-opportunities/) or feel free to reach out directly.
+I have been fortunate to co-supervise undergraduate and master's students on a variety of topics. I typically supervise one student per semester on a project related to my research interests. If you are a student at ANU and are interested in working together, please look for my project postings on the [ANU student opportunities](https://comp.anu.edu.au/study/projects/) or feel free to reach out directly.
 
 *   **Daniel Wang** (Undergraduate, PhB). Project: *Backpropagation-Free Gradient Estimation for Scalable Deep Learning* (Semester 1, 2025). Co-supervised with [Dylan Campbell](https://sites.google.com/view/djcampbell).
 
