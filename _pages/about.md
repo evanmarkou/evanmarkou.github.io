@@ -13,7 +13,7 @@ My research lies at the intersection of deep learning, optimisation, and geometr
 
 ### Core Research Interests
 
-* **The Geometry of Deep Learning:** I analyse the geometric structure of the loss landscape and solution space in deep neural networks. My goal is to characterise the properties of optimal solutions in over-parameterised models using tools from differential geometry and [frame theory](https://en.wikipedia.org/wiki/Frame_(linear_algebra)).
+* **The Geometry of Deep Learning:** I analyse the geometric structure of the loss landscape and solution space in deep neural networks. My goal is to characterise the properties of optimal solutions in over-parametrised models using tools from differential geometry and [frame theory](https://en.wikipedia.org/wiki/Frame_(linear_algebra)).
 
 * **Optimisation and Convergence:** I derive convergence guarantees for non-convex optimisation problems in neural networks. My work explores how geometric conditions on the manifold of minimisers can be leveraged to design more efficient and reliable training algorithms.
 
