@@ -12,7 +12,8 @@
     {%- assign author_name = site.author.name -%}
     {%- assign bold_author_name = author_name | prepend: '**' | append: '**' -%}
     <p class="publication-authors">{{ post.authors | replace: author_name, bold_author_name | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-    <p class="publication-venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }} {% if post.award %}<span class="publication-award">{{ post.award }}</span>{% endif %}</p>
+    <p class="publication-venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }} {% if post.award %}<span class="publication-award">{{ post.award }}</span>{% endif %}
+    {% if post.venue2 %}<br><em>{{ post.venue2 }}</em>{% if post.award2 %} <span class="publication-award">{{ post.award2 }}</span>{% endif %}{% endif %}</p>
     
     <div class="publication-links">
       {% if post.paperurl %}<a href="{{ post.paperurl }}" class="btn btn--ghost">Paper</a>{% endif %}

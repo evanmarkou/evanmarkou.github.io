@@ -4,6 +4,7 @@ collection: publications
 category: conferences
 date: 2024-12-01
 venue: 'Advances in Neural Information Processing Systems (NeurIPS)'
+venue2: 'Also presented at the Greeks in AI Symposium, Athens, 2025'
 authors: 'Evan Markou, Thalaiyasingam Ajanthan, and Stephen Gould' 
 thumbnail: '/images/publication2-template.png' # Placeholder image
 paperurl: 'https://evanmarkou.github.io/files/2024-neurips-guidingnc.pdf'

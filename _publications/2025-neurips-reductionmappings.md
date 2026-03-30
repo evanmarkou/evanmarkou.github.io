@@ -4,7 +4,9 @@ collection: publications
 category: conferences
 date: 2025-12-04
 venue: 'Advances in Neural Information Processing Systems (NeurIPS)'
-award: "(Spotlight)"
+award: '(Spotlight)'
+venue2: 'Also presented at the Kingston AI Group Symposium, Adelaide, 2026'
+award2: (Best Student Paper Award)
 authors: 'Evan Markou, Thalaiyasingam Ajanthan, and Stephen Gould' 
 thumbnail: '/images/publication2-template.png' # Placeholder image
 paperurl: 'https://evanmarkou.github.io/files/2025-neurips-reductionmappings.pdf'
